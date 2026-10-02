@@ -62,6 +62,8 @@ GhostDesk/
 
 ## 一鍵安裝方式
 
+> **主程式不隨專案發佈。** 安裝腳本會在執行時自動從 [wygodad/ghostdeck GitHub Releases](https://github.com/wygodad/ghostdeck/releases) 下載最新版本。
+
 ### 方式 1：直接執行批次檔（最簡單）
 在檔案總管中對 `install.bat` 點擊兩下直接執行。
 
@@ -71,20 +73,27 @@ GhostDesk/
 .\scripts\install.ps1
 ```
 
+### 方式 3：指定特定版本
+```powershell
+.\scripts\install.ps1 -GhostDeckVersion v1.36.0
+```
+
 > **重要注意事項**：
 > 1. 請在**一般使用者視窗**下執行（不要用右鍵「以系統管理員身分執行」開啟安裝視窗），因為 Windows 排程工作必須註冊在當前互動式登入使用者（例如 `i374`）的工作階段下，否則視窗無法正常彈出至使用者桌面。
 > 2. 停用 `MSI_Center_Service` 或是安裝 .NET 8 Runtime 時，安裝腳本會自動彈出 UAC 提權請求，點擊「是」即可。
+> 3. 安裝時需要網路連線以從 GitHub 下載主程式。
 
 ### 安裝腳本自動完成的項目：
-1. **檢查 .NET 8.0 Desktop Runtime**：若本機缺少則自動從微軟官方 CDN 下載並安裝。
-2. **部署主程式與監聽腳本**：複製至 `%LOCALAPPDATA%\Programs\GhostDeck`。
-3. **停用 MSI Center 衝突服務**：將 `MSI_Center_Service` 設為 Disabled 並停止。
-4. **註冊 Windows 工作排程器 (`GhostDeck Fn+F7`)**：
+1. **從 GitHub Releases 下載 GhostDeck 主程式**：自動取得最新版（或指定版本）`GhostDeck-win-x64.exe`。
+2. **檢查 .NET 8.0 Desktop Runtime**：若本機缺少則自動從微軟官方 `aka.ms` 連結下載並安裝。
+3. **部署監聽腳本**：複製 `ghostdeck-fnkey-listener.ps1` 至 `%LOCALAPPDATA%\Programs\GhostDeck`。
+4. **停用 MSI Center 衝突服務**：將 `MSI_Center_Service` 設為 Disabled 並停止。
+5. **註冊 Windows 工作排程器 (`GhostDeck Fn+F7`)**：
    * 觸發條件：使用者登入時自動啟動
    * 權限：一般使用者權限（無需提權即可監聽 WMI `MSI_Event`）
    * 形式：隱藏視窗、支援電池模式運作、常駐監聽
-5. **建立桌面捷徑**：於桌面建立 `GhostDeck.lnk`，並預先設定管理員提權屬性。
-6. **立即啟動**：排程工作於安裝完成時立即啟動生效。
+6. **建立桌面捷徑**：於桌面建立 `GhostDeck.lnk`，並預先設定管理員提權屬性。
+7. **立即啟動**：排程工作於安裝完成時立即啟動生效。
 
 ---
 

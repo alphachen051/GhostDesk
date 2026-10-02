@@ -13,7 +13,11 @@ fnkey.log
 *.dmp
 .cache/
 
-# Large Installers
+# 主程式二進位檔 — 由 install.ps1 從 GitHub Releases 自動下載，不納入版控
+bin/*.exe
+*.exe
+
+# 大型安裝程式
 windowsdesktop-runtime-*.exe
 
 # VS Code / IDE
