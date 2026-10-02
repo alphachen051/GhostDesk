@@ -1,0 +1,46 @@
+{
+  "machine": {
+    "computerName": "I374-NB01",
+    "manufacturer": "Micro-Star International Co., Ltd.",
+    "model": "Stealth 14Studio A13VF",
+    "systemType": "x64-based PC",
+    "biosVersion": "E14K1IMS.10E"
+  },
+  "ghostdeck": {
+    "version": "1.36.0",
+    "productVersion": "1.36.0+6845fd6cf94660d87dcfb891d1c3375d4875a34d",
+    "installedBinaryPath": "%LOCALAPPDATA%\\Programs\\GhostDeck\\GhostDeck-win-x64.exe",
+    "listenerScriptPath": "%LOCALAPPDATA%\\Programs\\GhostDeck\\ghostdeck-fnkey-listener.ps1",
+    "logPath": "%LOCALAPPDATA%\\GhostDeck\\fnkey.log",
+    "requiresElevation": true,
+    "elevationReason": "Embedded Controller (EC) read/write via WMI/ACPI requires Administrator privileges"
+  },
+  "hotkey": {
+    "combination": "Fn+F7",
+    "wmiNamespace": "root\\WMI",
+    "wmiClass": "MSI_Event",
+    "msiEvtCodeHex": "0x22001D",
+    "msiEvtCodeDec": 2228253,
+    "debounceSeconds": 3,
+    "behavior": "If GhostDeck is running, restore and bring to foreground; if not running, start GhostDeck with RunAs elevation"
+  },
+  "scheduledTask": {
+    "taskName": "GhostDeck Fn+F7",
+    "runLevel": "Limited",
+    "trigger": "AtLogOn",
+    "action": "pwsh.exe -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File \"%LOCALAPPDATA%\\Programs\\GhostDeck\\ghostdeck-fnkey-listener.ps1\""
+  },
+  "services": {
+    "disabled": [
+      "MSI_Center_Service"
+    ],
+    "preserved": [
+      "Micro Star SCM",
+      "msihid"
+    ]
+  },
+  "runtime": {
+    "required": ".NET 8.0 Desktop Runtime (x64)",
+    "installedVersion": "8.0.31"
+  }
+}

@@ -1,0 +1,21 @@
+# Windows / Explorer
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Logs
+*.log
+fnkey.log
+
+# Temporary & Cache
+*.tmp
+*.bak
+*.dmp
+.cache/
+
+# Large Installers
+windowsdesktop-runtime-*.exe
+
+# VS Code / IDE
+.vscode/
+.idea/

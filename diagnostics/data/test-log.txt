@@ -1,0 +1,66 @@
+=== GhostDeck test 2026-10-02T10:15:30 ===
+
+[1] 建立系統還原點...
+    OK
+
+[2] MSI WMI 基線 (唯讀)
+  -- MSI_ACPI --
+
+Active                : True
+InstanceName          : ACPI\PNP0C14\0_0
+PSComputerName        : 
+CimClass              : root/WMI:MSI_ACPI
+CimInstanceProperties : {Active, InstanceName}
+CimSystemProperties   : Microsoft.Management.Infrastructure.CimSystemProperties
+
+
+  MSI_Power : 不受支援 
+  MSI_CPU : 不受支援 
+  MSI_VGA : 不受支援 
+
+[3] 服務狀態 (前)
+
+Name                    Status StartType
+----                    ------ ---------
+Micro Star SCM         Running Automatic
+MSI Foundation Service Running Automatic
+MSI Sendevsvc          Running Automatic
+MSI_Center_Service     Running Automatic
+
+
+
+[4] 停用 MSI Center 相關服務 (保留 Micro Star SCM = Fn 鍵)
+    停用 MSI_Center_Service
+    停用 MSI Foundation Service
+    停用 MSI Sendevsvc
+    結束行程 MSI.CentralServer
+
+    服務狀態 (後)
+
+Name                    Status StartType
+----                    ------ ---------
+Micro Star SCM         Running Automatic
+MSI Foundation Service Stopped  Disabled
+MSI Sendevsvc          Stopped  Disabled
+MSI_Center_Service     Stopped  Disabled
+
+
+
+[5] 安裝 .NET 8.0.31 Desktop Runtime...
+    結束代碼: 0  (0 = 成功, 3010 = 需重開機)
+    目前 Desktop runtimes:
+      10.0.12
+      6.0.23
+      6.0.36
+      8.0.31
+
+[6] 啟動 GhostDeck v1.36.0
+    檔案: C:\Users\i374\AppData\Local\Temp\claude\C--Users-i374-Documents-GitHub-vscode\f09d8bf1-2dad-4cce-8339-c1dc4118531c\scratchpad\msi-baseline\GhostDeck-win-x64.exe
+    未偵測到行程 — 可能啟動失敗，檢查畫面上的錯誤訊息
+
+=== 完成。紀錄: C:\Users\i374\AppData\Local\Temp\claude\C--Users-i374-Documents-GitHub-vscode\f09d8bf1-2dad-4cce-8339-c1dc4118531c\scratchpad\msi-baseline\test-log.txt ===
+接下來請在 GhostDeck 視窗確認:
+  a) 是否正確辨識為 'MSI Stealth 14 Studio A13VF' (Tested)
+  b) 是否出現 firmware-change guard 警告 (BIOS E14K1IMS.10E)
+  c) 切到 Silent，記下切換前後的 CPU/GPU 風扇 RPM
+  d) 測試 Fn 鍵 (亮度 / 鍵盤背光 / Fn+F7)

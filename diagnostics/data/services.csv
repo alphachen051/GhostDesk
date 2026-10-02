@@ -1,0 +1,8 @@
+"Name","Status","StartType"
+"Micro Star SCM","Running","Automatic"
+"MSI Foundation Service","Running","Automatic"
+"MSI Sendevsvc","Running","Automatic"
+"MSiSCSI","Stopped","Manual"
+"msiserver","Stopped","Manual"
+"MSI_Center_Service","Running","Automatic"
+"NahimicService","Running","Automatic"
